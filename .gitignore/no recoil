@@ -1,0 +1,64 @@
+EnablePrimaryMouseButtonEvents (true)
+local step = 0
+local recoil = true
+function OnEvent(event, arg)
+  OutputLogMessage("event = %s, arg = %d\n", event, arg)
+  if (event == "PROFILE_ACTIVATED") then
+    EnablePrimaryMouseButtonEvents(true)
+  end
+
+  if (event == "MOUSE_BUTTON_PRESSED" and arg == 4) then
+	if (recoil == true) then
+		step = 2
+		recoil = true
+
+	end
+  end
+
+  if (event == "MOUSE_BUTTON_PRESSED" and arg == 5) then
+     if (recoil == true) then
+         step = 0
+         recoil = true
+    end
+  end
+
+ if (event == "MOUSE_BUTTON_PRESSED" and arg == 6) then
+	if (recoil == true) then
+		step = 30
+		recoil = true
+
+	end
+  end
+
+  if (event == "MOUSE_BUTTON_PRESSED" and arg == 7) then
+    if (recoil == true) then
+		step = 4
+		recoil = true
+
+	end
+  end
+
+  if (event == "MOUSE_BUTTON_PRESSED" and arg == 8) then
+    if (recoil == true) then
+		step = 8
+		recoil = true
+
+	end
+  end
+
+ if (event == "MOUSE_BUTTON_PRESSED" and arg == 9) then
+    if (recoil == true) then
+		step = 16
+		recoil = true
+
+	end
+  end
+
+  if (event == "MOUSE_BUTTON_PRESSED" and arg == 1 and recoil) then
+    repeat
+      Sleep(6)
+      MoveMouseRelative(0, step)
+    until not IsMouseButtonPressed(1)
+
+  end
+end
